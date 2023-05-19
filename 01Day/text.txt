@@ -1,0 +1,131 @@
+Day 1:
+Content as per RoadMap:
+What is nodejs?
+Npm packages
+ - In build
+ - Third party
+ - Custom
+ ___________________________________________________
+What is Mern Stack
+
+MERN stack is set of technologies used for Web Application Development.
+MERN stack stands for MONGODB, EXPRESS, REACT, NODE
+
+Client=> React
+Server=> EXPRESS
+
+Popular Stacks
+MERN:MONGODB EXPRESS React NODE
+MEAN:MONGODB EXPRESS ANGULAR NODE
+MEVN:MONGODB EXPRESS VUE NODE
+LAMP:LINUX APACHE MYSQL PHP
+___________________________________________________________
+
+NODEJS:
+
+Now, if we have install NodeJS, its okay,
+if not let us install the Nodejs 
+
+Install and check the Node Version
+Open the command prompt and type 
+=> node -v
+
+What is NodeJS
+There was no way to use the javascript programming language outside of the browser to build things like web servers that could access the file system and connect to databases.
+All of these are things that other programming languages can do without any problem.
+
+All of this ended up changing with the introduction of NODEJS
+
+Javascript developers could now use javascript on the server side so they could use the same javascript programming language to create web servers, command line interfaces application 
+
+Node is a way to run JS code on the server 
+NODE JS is a javascript runtime built on Chrome's v 8 JavaScript engine
+
+The job of the JavaScript engine whether it's V8 or any of the other ones out there is to take in JavaScript
+code and compile it down to machine code that your machine can actually execute.
+So NODEJS is not a programming language.
+
+In the end of the day all of the code we're gonna write in this class is indeed javascript code.
+
+The runtime is something that provides custom functionality so various tools and libraries specific to an environment.
+
+So in the case of Chrome it provides V8 with various objects and functions that allow javascript developers
+in the Chrome browser to do things like add a button click events or manipulate the DOM.
+
+Now neither of those features makes sense for a node where we don't have buttons and we don't have a DOM so node doesn't provide those things.
+
+Instead the node runtime provides various tools that node developers need libraries for setting up web
+servers integrating with the file systems so you can read and write from disk and then the end of the day both chrome and NodeJS are just creating their own modified version of JavaScript.
+
+Now in the end of the day it's still that same core javascript language but with custom functions and
+objects injected.
+
+Example:
+Open Chrome
+console
+2+3
+>5
+
+'Poonam'.toUpperCase()
+>Poonam
+
+Open the terminal in cmd
+>node
+>2+3
+>'Poonam'.toUpperCase()
+
+
+difference
+
+If you've worked with JavaScript in the browser before then you're likely familiar with the window object
+the window object is a reference to our browser window.
+
+I can type window
+I can hit Enter that's going to dump the entire object to the console.
+>window
+
+And if we expand it we can view all of the different methods and properties we have access to.
+
+And there are quite literally hundreds of them.
+
+Right here we have some methods related to click events I have on click on change and others.
+And if I continue to scroll down we have things related to the window size.
+I have outer height outer width and others.
+Now all of these make sense in the context of JavaScript in the browser because we actually have a window
+to work with.
+
+What happens if I try to get the window in note I'm gonna type window.
+I'm gonna hit enter and I can see I'm getting an error reference error window is not defined so window
+is something specifically provided by the chrome runtime when javascript is running in the chrome application
+node doesn't have a window it doesn't need window so window is not provided.
+Now with node we have something kind of similar.
+
+We have a variable called global 
+global stores a lot of the global things 
+And if we scroll up we can see we have dozens of different properties and methods available to us.
+>global
+
+Browser:
+in the browser we have access to document
+document allows me to work with the dOM
+So right here I have a whole bunch of different elements that make up my page and I can use document
+to manipulate them in whatever way I see fit.
+Now this makes sense once again for the browser where we actually have a dom.
+
+NODE:
+It doesn't make sense for node where we don't have a dom.
+If I tried to print document to the terminal what do I get.
+Once again reference error document is not defined.
+Now in NODEJS we have something kind of similar to document called process.
+Process gives us various properties and methods for manipulating the node process that's running.
+If i check process.exit() this to the terminal we can see there are all sorts of interesting methods and properties
+including one exit
+exit allows us to exit the current node process.
+process.exit()
+process which is an object and exit which is a method 
+What do I get.
+I can see I'm brought back to the standard terminal where I could run other commands no longer am I running little node statements now process once again does not exist over in the browser that is specific to NODEJS if I type out process and dump it I get process is not defined.
+
+
+
+Why we need EXPRESS
