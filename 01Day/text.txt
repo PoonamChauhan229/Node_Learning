@@ -121,11 +121,166 @@ Process gives us various properties and methods for manipulating the node proces
 If i check process.exit() this to the terminal we can see there are all sorts of interesting methods and properties
 including one exit
 exit allows us to exit the current node process.
-process.exit()
+>process.exit()
 process which is an object and exit which is a method 
 What do I get.
 I can see I'm brought back to the standard terminal where I could run other commands no longer am I running little node statements now process once again does not exist over in the browser that is specific to NODEJS if I type out process and dump it I get process is not defined.
 
+NPM is installed when the NODE JS is installed.
+we have a website
+npmjs.com
+
+You can search for all sorts of pre written packages that you can use inside of your application.
+So if you want to validate emails there's a package for that.
 
 
-Why we need EXPRESS
+Why to use NodeJS
+Node.js is a popular runtime environment that allows developers to run JavaScript code outside of a web browser. Here are some reasons why developers choose to use Node.js:
+
+JavaScript Everywhere: Node.js enables developers to use JavaScript on both the client-side and server-side, creating a unified language and reducing the need to switch between different programming languages. This provides better code reusability and efficiency.
+
+Asynchronous and Non-Blocking I/O: Node.js is built on an event-driven, non-blocking I/O model, which means it can handle concurrent requests efficiently. This makes it well-suited for handling high-traffic applications and performing I/O-intensive tasks, such as reading and writing to databases or working with network connections.
+
+Scalability: Node.js is designed to be highly scalable. Its non-blocking I/O model allows it to handle a large number of simultaneous connections with low memory overhead. This makes it a great choice for building real-time applications, chat servers, streaming services, and other applications that require high scalability.
+
+Large Package Ecosystem: Node.js has a vast ecosystem of open-source packages available through the npm (Node Package Manager) registry. These packages cover a wide range of functionalities, allowing developers to leverage existing solutions and accelerate the development process.
+
+Community and Support: Node.js has a vibrant and active community of developers. This community contributes to the growth and improvement of the Node.js ecosystem, providing resources, frameworks, and tools. The large community also ensures that there are plenty of learning materials, tutorials, and support available for developers.
+
+Microservices Architecture: Node.js is well-suited for building microservices-based architectures. Its lightweight and modular nature make it easy to create and manage independent services that can communicate with each other via APIs. This enables developers to build scalable and flexible distributed systems.
+
+Efficiency and Performance: Node.js is known for its performance and efficiency. Its event-driven, non-blocking architecture allows it to handle requests quickly, resulting in low latency and high throughput. Additionally, Node.js uses the V8 JavaScript engine, which provides high-performance execution of JavaScript code.
+
+Cross-Platform Compatibility: Node.js is cross-platform and runs on various operating systems, including Windows, macOS, and Linux. This allows developers to write code once and deploy it on multiple platforms, making it more cost-effective and efficient.
+
+These are just some of the reasons why developers choose to use Node.js. Ultimately, the decision to use Node.js depends on the specific requirements of the project and the preferences of the development team.
+
+Npm packages
+ - In build
+ - Third party
+ - Custom
+ ________________________________
+NPM (Node Package Manager) is a package manager for Node.js that allows developers to install, manage, and use various packages and libraries in their projects. NPM provides access to a vast ecosystem of packages, including in-built packages, third-party packages, and custom packages.
+
+In-built Packages:
+Node.js comes with a set of core modules and packages that are included by default. These in-built packages provide essential functionalities and can be used directly in your Node.js applications without the need for additional installation. Examples of in-built packages include http for creating web servers, fs for file system operations, path for working with file paths, and util for utility functions.
+
+Third-party Packages:
+Third-party packages are created by the Node.js community and are available for installation through the NPM registry. These packages offer a wide range of functionalities and can significantly enhance your development process. Popular third-party packages include Express.js for building web applications, Lodash for utility functions, Axios for making HTTP requests, Socket.IO for real-time communication, and many more. You can install third-party packages using the npm install command.
+
+Custom Packages:
+Custom packages are packages that you or your team develop specifically for your project's needs. These packages are not available on the public NPM registry but can be published to a private registry or installed directly from a local file system. Custom packages are often used to encapsulate reusable code, implement project-specific functionalities, or create modular components within your application. You can create custom packages using tools like npm-init and publish them to a private registry or distribute them internally within your organization.
+
+By leveraging in-built packages, third-party packages, and custom packages, you can rapidly build applications, utilize existing solutions, and create modular and reusable code in your Node.js projects. NPM makes it easy to manage dependencies and integrate external functionalities into your applications, saving you time and effort in development.
+
+
+NODE MODULE SYSTEM:
+
+Here , the focus is going to be on one of the most fundamental features of node which is the node module system.
+This is what allows us to load functionality into our app and use it to do interesting things.
+So as an example 
+if we want to go ahead 
+=>to read or write from the file system 
+=>to connect to a database
+=>start up a web server all of those are going to require you to use the node module system.
+
+Now we're going to learn how to use it in three different ways.
+
+You'll learn how to load an core node modules.These are modules that are included with your node installation.
+
+You'll learn how to load in third party modules written by other developers 
+
+You'll learn how to load in modules that you yourself have created.
+
+I'm really excited to dive in so lets start.
+
+Importing the Node Modules.
+
+we're going to talk about one of the most fundamental features of node.
+This is the module system and this is what's going to allow us to take advantage of all of the cool and interesting things that node provides.
+
+So as an example over here in the docs there are all sorts of modules listed.
+
+CONSOLE:
+
+with console are available globally which means we don't have to do anything special to use them right here as an example.
+
+create file 
+>hello.js
+>console.log("Welcome to the Node Modules")
+>scroll down to documentation of NodeJS
+
+refer hello.js file 
+
+We just accessed console.log to use it.
+
+
+Others require us to actually load them in before they can be used in our scripts.
+That's exactly what we're going to explore.
+
+And the module we're going to use to explore this is the file system module
+
+>check the nodejs documentation
+This is the module that's going to allow us to access the operating systems file system.
+We'll be able to read and write append files and figure out if a given file or directory exists.
+
+All sorts of interesting utilities related to the file system at the table of contents here contains
+all of the interesting ways we can use this module inside of our node applications.
+
+Let use them
+all these methods are listed in alphabetical order
+
+filesystem
+This is the method that's going to allow us to write some data to a file on our file system from the
+node j s application.
+
+Now we have two versions of this
+>fs.writeFile()
+>fs.writeFilesync()
+
+The first one is an asynchronous version 
+Second one is a synchronous version.
+
+And for the moment we're going to stick with the synchronous version.
+Don't worry though we will be exploring asynchronous
+that as well
+So let's go ahead and use it.
+>NotesApp Folder create 
+    >app.js file create
+
+
+https://nodejs.org/dist/latest-v11.x/docs/api/fs.html
+
+Importing the Files:
+Till now you learned how to use the require function to load in a node module.
+
+Now you're going to learn how to use their require a function to load in another file you've created.
+
+we're gonna have to put everything in this file if we want it to run.
+And that's not ideal as our applications get larger and more complex.
+
+We're gonna have way more code than we would want to have in a single file when all of our code sits in one file and makes the project really hard to expand on and maintain.
+So from the start we're gonna go ahead and create projects that use multiple files so we can stay organized.
+We can do something like define a function in one file then require it into a different file and use it
+And that's exactly what we're going to end up doing here
+
+const name="Poonam"
+console.log(name)
+
+Now, let's add a second file into the mix and try to define this variable in that second file over inside it
+
+create another file
+>utilis.js
+
+Let's go ahead and start to define some variables in that other file that we use an app.js so as we create complex applications we'll have all sorts of functions will define in other files and will want to use them in our applications main file which in this case is app.js so let's see what that looks like.
+
+Another example
+
+Now let's go ahead and look at a slightly more real world example where we export a function of the function that we're going to create we'll be defined in utilis.js it'll be exported from that file.
+It'll be loaded into this one and called down below 
+Lets go to utilis.js
+
+
+
+
+
