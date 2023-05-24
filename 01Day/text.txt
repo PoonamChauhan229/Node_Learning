@@ -280,6 +280,102 @@ Now let's go ahead and look at a slightly more real world example where we expor
 It'll be loaded into this one and called down below 
 Lets go to utilis.js
 
+importing npm Modules:
+Now we're gonna learn how to use the module system to load in NPM packages.
+
+This is going to allow us to take advantage of all of those awesome NPM modules from right inside of our node applications.
+
+There are an endless amount of awesome useful NPM packages that we can install so we don't have to recreate the wheel from scratch.
+
+Examples would be validating data like emails and maybe even sending an email.
+
+if we use NPM modules to solve common problems which is indeed the standard in the node community then we can spend our developer time focusing on the awesome features that make our app unique.
+So as I mentioned a bit earlier in the class when we installed node we also got the NPM program installed on our machine.
+
+
+This gives us access to everything over at NPMjs.com which we'll head back over to in just a few moments.
+
+Before using we have to take 2 steps:
+-One we have to initialize NPM in our project 
+-two we have to install all of the modules we actually want to use.
+
+
+node -v
+npm -v
+
+npm init -y
+To initailize npm in the project
+It is simply going to create a single configuration file that we can use to manage all of the dependencies from the NPM Web site that we want to install.
+visit https://www.npmjs.com/ and install the modules
+
+validator package:
+package which gives us all sorts of awesome tools to perform data validation.
+npm i validator
+
+This is a very popular package with over one million weekly downloads.
+Lets go and use it.
+
+2 things happened 
+one we got a package-lock.json
+two we got a new directory inside the node modules directory.
+There is a folder which contains all of the code for the dependencies we installed.
+
+Now the node modules directory is something we should not be manually editing we should not go inside of validator and actually change these files and we'll talk more about that as we progressed through the course and learn more about package management when it comes to working with node modules.
+
+
+Now you'll notice there are two versions here NO ES6 and ES6.
+
+The only big difference here is that up above we're using require which is what we're using in node 
+
+They're using a slightly different syntax using the import keyword node currently does not support the import keyword
+This we will cover in the next class.
+
+Priting the color:
+Challenge
+
+Global npm Modules and nodemon
+We're going to learn how to install and work with global NPM packages.
+These are going to allow us to get a new command we can execute from the terminal.
+So far all of the packages we've worked with are known as locally installed packages.
+That's when we install the dependency explicitly into our project like we've done with validator and chalk in the notes app project.
+You can tell it's a local dependency because it's listed in package.json like our two dependencies are now local NPM modules those get loaded into your project code with require like we've seen with chalk and validator when we install a module globally we actually don't load it indirectly to our source files instead we install it globally and it gives us access to a new command we can use from the terminal.
+
+Now in the case of this video we're going to install a NPM module globally that is a really nice utility for working with node because it's going to allow us to run our application and automatically restart the app whenever the app code changes.
+
+So we won't have to constantly switch to the terminal and rerun the same command over and over again
+Pakage Name:
+nodemon
+
+The first thing we have to do is install it now when we're installing a module globally the Installation 
+Command is basically the same with one slight difference.
+The only difference is we use the G flag which is short for global.
+npm i nodemon -g
+
+We're gonna notice that node modules package lock Jason and package Jason haven't changed in any way what so ever when we install a module globally it is not changing the individual project it's installing the tool on our operating system itself.
+
+Check the nodemon Version
+nodemon -v
+
+You can work through the four steps down below.
+
+Step1
+So step one click on the windows icon and search for power shell.
+
+Step2
+Step Two right click power shell in these search results and click Run as Administrator.
+
+Step3:
+Once you have it running as an administrator in step three run set execution policy setting and equal
+
+
+
+
+
+
+
+
+
+
 
 
 
