@@ -368,6 +368,70 @@ Step3:
 Once you have it running as an administrator in step three run set execution policy setting and equal
 
 
+FileSystem and CommandLine arguments:
+
+The first is the file system and the second is our command line arguments.
+File system is going to allow us to store the user's note data.
+Command line arguments are going to allow us to get input from the user.
+
+HTTP Request:
+HTTP Request is important because with this our application is going to be able to communicate with the outside world.
+
+so we know 
+>want to get real time weather data into your app 
+>want to send an email to someone
+>wanted to send someone a text message 
+for all of the above we will need http request.
+It is at the core of building real world applications that actually communicate with the outside world.
+
+Visit 
+https://weatherstack.com/
+
+Sign up and fill necessary details
+
+Get the API Key:
+8087c15b23a6cf1192cc2b9ee2a578c2
+
+Go to the API documentation:
+http://api.weatherstack.com/current?access_key=8087c15b23a6cf1192cc2b9ee2a578c2&query=New%20York
+
+Now let's go ahead and explore the weather API.
+
+>06waetherapp
+    >app.js
+>Terminal> npm init -y
+         > npm i request
+
+
+https://www.npmjs.com/package/request
+
+Scroll down
+> All available options
+ search for json
+ json - sets body to JSON representation of value and adds Content-type: application/json header. Additionally, parses the response body as JSON.
+
+Mapbox:
+https://docs.mapbox.com/api/search/geocoding/
+Convert address to geocoding
+Convert geocoding to address
+
+https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1IjoicGVlY2VlMjI5IiwiYSI6ImNsMXpicnlxMzBrenIzY21xMmowdHMxY3YifQ.qYJByU5i-SA4E5LC7muC0w&limit=1
+
+
+handling Errors
+file> handlingerrors.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
