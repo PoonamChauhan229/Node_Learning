@@ -420,6 +420,15 @@ https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_toke
 
 handling Errors
 file> handlingerrors.
+    >callback_handlingerror
+
+utilis folder
+>geoCode
+>app.js
+
+
+
+
 
 
 
