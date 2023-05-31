@@ -1,0 +1,35 @@
+Contents:
+What is express 
+API methods - GET, POST, PUT, DELETE
+Request & response objects 
+Url  &  Query parameters
+
+Express:
+
+we're going to start learning about one of the most popular NPM libraries-That is Express
+
+Express makes it really easy to create web servers with node these servers are going to allow us to serve up all of the assets for our web application
+
+This includes 
+HTML=>to render to the screen 
+CSS=>to style our application
+client side JavaScript=>so we can set up all sorts of awesome user interaction 
+
+now using Express,We're also going to be able to serve up JSON data
+
+
+Today, we're going to create and run your very first nodeJS based server
+
+This is going to offer users an entirely new way to interact with your applications instead of needing to run commands from the terminal to interact with your app.We'll be able to visit a URL and by the end of this session ,you can visit in the browser to interact with your NodeJS application with the node server.
+
+This would include HTML documents CSS files to style the page client side JavaScript and maybe some images
+
+Express is one of the original NPM packages and it's one of my favorite express definitely helped put no JSA on the map back in the day because it made it so easy to create web servers whether you wanted to serve up something like a static website or whether you wanted to create a complex HTTP JSON based API to serve as the backend for something like a mobile or web application.
+
+First, is to get an basic server up and running.
+Lets start
+npm init -y
+npm i express
+Create a folder src
+> WE will stay more organized so we are doing it.
+src> app.js
