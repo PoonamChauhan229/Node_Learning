@@ -33,3 +33,21 @@ npm i express
 Create a folder src
 > WE will stay more organized so we are doing it.
 src> app.js
+
+Now,
+It would be nice if we could write our HDL in separate H2 CML files and have the express server serve those up and we can.
+So what we're gonna do is configure express to serve up an entire directory of assets that could contain HTML files CSS s files client side JavaScript videos images and more.
+So let's go ahead and start this process off.
+
+let's create the directory
+>public
+    >index.html and other assests files
+
+index.html=> create a very basic HTML file and it will be served by default.
+So this is the page that will eventually show up at the root of our Web site.
+
+Use EmmetAbrevation and create a basic template.
+
+
+
+
