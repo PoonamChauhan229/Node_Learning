@@ -1,6 +1,7 @@
 // Express library exports just a single function so express is actually a function as opposed to something like an object and we call it to create a new express application 
-
+const path=require('path')
 const express=require('express')
+const exp = require('constants')
 // console.log(express)
 const app=express()
 // Now the Express function doesn't take in any arguments.
@@ -30,6 +31,15 @@ const app=express()
 
 // We could do something like read data from the database or create some HTML and we could use various methods on response to actually send a response back.
 // Let's go ahead and stick with a very basic text response.
+
+const publicDirectory=path.join(__dirname,"../public")
+app.use(express.static(publicDirectory))
+// Challenge
+// app.use(express.static(path.join(publicDirectory,"/help.html")))
+// // console.log(path.join(publicDirectory,"/help.html"))
+
+// app.use(express.static(path.join(publicDirectory,"/about.html")))
+
 
 // This is at the root route
 app.get('/',(req,res)=>{
@@ -154,6 +164,33 @@ app.get("/weather",(req,res)=>{
 // Setup weather route t send back JSON
     //Object with forecast and location strings
 // Test the work by visiting the browser.
+
+
+console.log(__dirname)
+console.log(__filename)
+
+// PATH
+
+// const path=require('path')
+console.log(path.join(__dirname,".."))
+console.log(path.join(__dirname,"../.."))
+// Now , i want to go public folder
+console.log(path.join(__dirname,"../public"))
+
+// NOW, we will use app.use()
+// this will explain what its doing
+// For now all you need to know is that it's a way to customize your server
+
+// app.use(express.static(path.join(__dirname,"../public")))
+// express.static so express dot static is a function
+// static takes the path to the folder
+
+// instead of directly passing it, lets store it in 1 variable and do it
+
+// const publicDirectory=path.join(__dirname,"../public")
+// app.use(express.static(publicDirectory))
+
+// This 2 lines let us paste at the top so that we can get the access of it
 
 
 

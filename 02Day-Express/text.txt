@@ -47,6 +47,46 @@ index.html=> create a very basic HTML file and it will be served by default.
 So this is the page that will eventually show up at the root of our Web site.
 
 Use EmmetAbrevation and create a basic template.
+<h1></h1>
+So now we have this basic HTML document in the public folder.
+
+How we serve up the contents of that directory
+
+And one important piece of information we need is the path to the public folder.And it can be a relative path.
+It needs to be an absolute path from the route of the machine.
+
+Node helps us to  provides us with two very handy variables
+Lets discuss about that which we will actually integrate them into the application.
+
+console.log(__dirname)
+    The first one __dirname that contains a path to the directory.
+
+console.log(__filename)
+    This is very similar to dirname though instead of providing the path to the directory the file lives in it provides the path to the file itself.
+
+Let us see one more core node module of NodeJS
+    >Path
+    >we can get this is in NodeJS documentation as Well
+    >provides us a ton of great utilities for working with paths
+    >path now path provides us with a couple of methods that makes it easy to manipulate string paths
+Let's go ahead and see how it works over in visual studio code.
+
+After this
+const publicDirectory=path.join(__dirname,"../public")
+
+app.use(express.static(publicDirectory))
+So this is the contents of our HTML file which we set up in the public folder.
+
+
+Challenge TIme:
+Create 2 more HTML files
+1-About page
+2-Help page
+3-Remove old routtes
+4-Visit the browser and test the work
+
+Just create 2 files automatically, in the browser we will get the access to it.
+
 
 
 
