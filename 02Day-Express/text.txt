@@ -87,6 +87,13 @@ Create 2 more HTML files
 
 Just create 2 files automatically, in the browser we will get the access to it.
 
+Create 
+Css > styles.css
+JS  >app.js
+Img 
+Folder in public
+
+Configure and complete the desigining of it.
 
 
 

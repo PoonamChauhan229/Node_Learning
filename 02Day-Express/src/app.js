@@ -34,11 +34,6 @@ const app=express()
 
 const publicDirectory=path.join(__dirname,"../public")
 app.use(express.static(publicDirectory))
-// Challenge
-// app.use(express.static(path.join(publicDirectory,"/help.html")))
-// // console.log(path.join(publicDirectory,"/help.html"))
-
-// app.use(express.static(path.join(publicDirectory,"/about.html")))
 
 
 // This is at the root route
