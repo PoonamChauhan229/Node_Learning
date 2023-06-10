@@ -17,7 +17,6 @@ client side JavaScript=>so we can set up all sorts of awesome user interaction
 
 now using Express,We're also going to be able to serve up JSON data
 
-
 Today, we're going to create and run your very first nodeJS based server
 
 This is going to offer users an entirely new way to interact with your applications instead of needing to run commands from the terminal to interact with your app.We'll be able to visit a URL and by the end of this session ,you can visit in the browser to interact with your NodeJS application with the node server.
@@ -94,6 +93,57 @@ Img
 Folder in public
 
 Configure and complete the desigining of it.
+
+
+Here we are going to create our own API endpoints.
+Also we will learn how to access them with the browser.
+
+Backend:
+We know, how to take an address and convert it into forecast.
+
+Frontend:
+We know, how to get our application running in our browser.
+
+Question is , how we would integrate this two.
+
+Before we move ahead, let us understand about the Query String.
+Query String:
+
+The goal is to allow users to be able to fetch a forecast for their location from the weather Web site.
+So instead of someone running a command from the terminal to get the forecast they'll be able to pull up a you are all in the browser here they'll see a form they type their address into an input they click a button and a few hundred milliseconds later their weather information shows up.
+
+So we will be using /waether route to do so.
+
+weather route needs to know what address it should geo code and fetch the forecast for to get that done and we'll use a query string.
+
+So the browser is going to provide a query string as part of the URL and server will then read the query string value to get the address information
+
+Now you've already worked with query strings before you'll remember that we used them with the geo coding API over in weather app.
+
+We will copy paste the utilis directory from yesterday class.
+
+So lets go and check again geocode.js file.
+
+before moving ahead, we will do 1 example.
+where we create an endpoint /products and see whether its working on not.
+
+If we want to implement an search we have to use query string.
+
+querystring
+
+/?key=value&rating=5
+/?serach=games&rating=5
+
+And the question is how does the server actually get that information.
+Now this information it's available to us inside of our Express route handler.
+
+req.query
+query which we are passing.
+req.query.serach
+req.query.rating
+
+npm i request
+as we copy pasted the utilis folder.
 
 
 

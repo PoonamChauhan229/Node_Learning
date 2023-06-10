@@ -1,3 +1,6 @@
+const geoCode=require('./utlis/geoCode')
+const foreCast=require('./utlis/forecast')
+
 // Express library exports just a single function so express is actually a function as opposed to something like an object and we call it to create a new express application 
 const path=require('path')
 const express=require('express')
@@ -118,12 +121,62 @@ app.get('/about',(req,res)=>{
     res.send('<h1>About Page</h1>')
 })
 
+// app.get("/weather",(req,res)=>{
+//     // res.send("Weather Page")
+//     // Challenge Ans
+//     res.send({
+//         forecast:"It is snowing",
+//         location:"Philadelphia"
+//     })
+// })
+
+// Challenge:
+
+// app.get("/weather",(req,res)=>{
+//     if(!req.query.address){
+//         res.send({
+//             error:"No address? Pass an address"
+//         })
+//     }   
+//     res.send({
+//         forecast:"It is snowing",
+//         location:"Philadelphia",
+//         address:req.query.address
+//     })
+// })
+
 app.get("/weather",(req,res)=>{
-    // res.send("Weather Page")
-    // Challenge Ans
+    if(!req.query.address){
+        res.send({
+            error:"No address? Pass an address"
+        })
+    }  
+    geoCode(req.query.address,(error,{latitude,longitude})=>{
+
+    }) 
     res.send({
         forecast:"It is snowing",
-        location:"Philadelphia"
+        location:"Philadelphia",
+        address:req.query.address
+    })
+})
+
+
+
+// http://localhost:3000/products?search=games&rating=5
+app.get("/products",(req,res)=>{
+    if(!req.query.search){
+        res.send({
+            
+            error:"You Must Provide a Search Term"})
+    }
+    res.send({
+        products:[
+            {
+                "search":req.query.search,
+                "rating":req.query.rating
+            }
+        ]
     })
 })
 
