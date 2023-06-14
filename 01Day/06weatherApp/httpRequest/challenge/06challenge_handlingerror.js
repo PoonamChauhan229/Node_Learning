@@ -1,12 +1,3 @@
-const request=require('request')
-const url=`https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1IjoicGVlY2VlMjI5IiwiYSI6ImNsMXpicnlxMzBrenIzY21xMmowdHMxY3YifQ.qYJByU5i-SA4E5LC7muC0w&limit=1`
-request({url:url,json:true},(error,response)=>{
-    // console.log(response.body)
-    let lat=response.body.features[0].center[0]
-    let lon=response.body.features[0].center[1]
-    console.log(lat,lon)
-})
-
 // Handling error Challenge:
 // Setup an error handler
 // Test up by disabling the network 
@@ -15,6 +6,7 @@ request({url:url,json:true},(error,response)=>{
 
 // Below URL to check whether second error we are getting or not.
 // const newUrl=`https://api.mapbox.com/geocoding/v5/mapbox.places/12what12.json?access_token=pk.eyJ1IjoicGVlY2VlMjI5IiwiYSI6ImNsMXpicnlxMzBrenIzY21xMmowdHMxY3YifQ.qYJByU5i-SA4E5LC7muC0w&limit=1`
+
 const newUrl=`https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1IjoicGVlY2VlMjI5IiwiYSI6ImNsMXpicnlxMzBrenIzY21xMmowdHMxY3YifQ.qYJByU5i-SA4E5LC7muC0w&limit=1`
 request({url:newUrl,json:true},(error,response)=>{
     // console.log(response.body)

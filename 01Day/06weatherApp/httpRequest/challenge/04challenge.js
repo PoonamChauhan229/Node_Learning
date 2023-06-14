@@ -9,4 +9,4 @@ request({url:url,json:true},(error, response)=>{
     const data=response.body.current
     // console.log(response.body.current)
     console.log(`It is currently ${data.temperature} degrees out and there is an ${data.feelslike}% chance of rain  and weather Description is ${data.weather_descriptions[0]}`)
-})
+}) 
