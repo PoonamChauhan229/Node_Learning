@@ -1,3 +1,11 @@
+// Setup the forecast function for getting the forecast
+// Require the function in app.js
+// 3 calls
+
+// forecast(-75.7088,44.1545,(error,data)=>{
+    // console.log(error,data)
+// })
+
 const request=require('request')
 
 const forecast=(lat,lon,callback)=>{
@@ -5,14 +13,14 @@ const forecast=(lat,lon,callback)=>{
   request({url:newUrl,json:true},(error,response)=>{
     // console.log(response.body)
    if(error){
-    callback("Unable to connect to the Geolocation","No data Found")
+    callback("Unable to connect to the Geolocation",undefined)
    }
    else if(response.body.error){
-    callback("Unable to get the geocodes as per the LatLon and try again with different LatLon","No Data Found")
+    callback("Unable to get the geocodes as per the LatLon and try again with different LatLon",undefined)
    }
    else{
     let data=response.body.current
-    callback("Forecast, No Error Found",`It is currently ${data.temperature} degrees out and there is an ${data.feelslike}% chance of rain  and weather Description is ${data.weather_descriptions[0]}`)
+    callback(undefined,`It is currently ${data.temperature} degrees out and there is an ${data.feelslike}% chance of rain  and weather Description is ${data.weather_descriptions[0]}`)
 
    }
 })

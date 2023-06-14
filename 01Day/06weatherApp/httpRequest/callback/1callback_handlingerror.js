@@ -6,16 +6,18 @@ const geoCode=(address,callback)=>{
 request({url:newUrl,json:true},(error,response)=>{
     // console.log(response.body)
    if(error){
-    callback("Unable to connect to the Geolocation",undefined)
+    callback("Unable to connect to the Geolocation","No data Found-Undefined")
    }else if(response.body.features.length===0){
     callback("Unable to get the geocodes as per the SearchTerm and try again with different searchTerms","No Data Found-Undefined")
    }else{
     let lat=response.body.features[0].center[0]
     let lon=response.body.features[0].center[1]
     let place=response.body.features[0].place_name
-    callback(undefined,{lat,lon,place})
+    callback('No Error Found !!! -Undefined',{lat,lon,place})
    }
 })
 }
-module.exports=geoCode
-// even if function export without parenthethis()
+geoCode("Norway",(error,data)=>{
+    console.log(error)
+    console.log(data)
+})

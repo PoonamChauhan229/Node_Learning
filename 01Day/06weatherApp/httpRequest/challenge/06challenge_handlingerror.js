@@ -4,11 +4,13 @@
 // Setup error for not matching results
 // Test the altering the search term 
 
-// Below URL to check whether second error we are getting or not.
-// const newUrl=`https://api.mapbox.com/geocoding/v5/mapbox.places/12what12.json?access_token=pk.eyJ1IjoicGVlY2VlMjI5IiwiYSI6ImNsMXpicnlxMzBrenIzY21xMmowdHMxY3YifQ.qYJByU5i-SA4E5LC7muC0w&limit=1`
 
-const newUrl=`https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1IjoicGVlY2VlMjI5IiwiYSI6ImNsMXpicnlxMzBrenIzY21xMmowdHMxY3YifQ.qYJByU5i-SA4E5LC7muC0w&limit=1`
-request({url:newUrl,json:true},(error,response)=>{
+// Below URL to check whether second error we are getting or not.
+// const geoCodeURL=`https://api.mapbox.com/geocoding/v5/mapbox.places/12what12.json?access_token=pk.eyJ1IjoicGVlY2VlMjI5IiwiYSI6ImNsMXpicnlxMzBrenIzY21xMmowdHMxY3YifQ.qYJByU5i-SA4E5LC7muC0w&limit=1`
+
+const request=require('request')
+const geoCodeURL=`https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1IjoicGVlY2VlMjI5IiwiYSI6ImNsMXpicnlxMzBrenIzY21xMmowdHMxY3YifQ.qYJByU5i-SA4E5LC7muC0w&limit=1`
+request({url:geoCodeURL,json:true},(error,response)=>{
     // console.log(response.body)
    if(error){
     console.log("Unable to connect to the Geolocation")

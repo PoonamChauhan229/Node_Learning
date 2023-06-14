@@ -1,0 +1,49 @@
+Starting to set up the database server on our machine.
+how we can connect to that database from no J.S
+thereafter, perform CRUD as Well
+
+we're gonna talk about the database where we'll be using to store our userdata that is Mongo D.B..
+
+We will be stoing the JSON data.
+https://www.mongodb.com/try/download/community
+
+MongoDb is a great choice for NodeJS developers
+
+MongoDb  falls under a different category of database called NOSQL database
+
+SQL Stands for Structured Query Language
+NOSQL Stands for Not Only Structured Query Language
+
+SQL 
+database:
+    we can create databases as our application needs
+Tables:
+    we have tables to store the data
+    -Rows and cols we have
+         >user data=> store users data(table1)
+        >task data=> store task data(table2)
+    -Row is referred as row or record
+    4 columns we have.
+
+
+
+MongoDb
+database:
+    we can create database as our application needs
+Collections:
+    >we can have many collections for our application
+        >user data=> store users data(collection1)
+        >task data=> store task data(collection2)
+ 1 entry is knaown as document
+ documents like JSON {id:"",etc}
+ in mongodb its reffered as feilds, it has 4 feilds.
+
+ installation:
+ Download and innstall
+ after that create mongodb-data 
+ 
+
+
+
+    
+

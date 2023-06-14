@@ -1,10 +1,12 @@
 const geoCode=require('./utlis/geoCode')
 const foreCast=require('./utlis/forecast')
-
+ const dotenv=require('dotenv')
+const cors=require('cors')
 // Express library exports just a single function so express is actually a function as opposed to something like an object and we call it to create a new express application 
 const path=require('path')
 const express=require('express')
 const exp = require('constants')
+const forecast = require('./utlis/forecast')
 // console.log(express)
 const app=express()
 // Now the Express function doesn't take in any arguments.
@@ -38,6 +40,9 @@ const app=express()
 const publicDirectory=path.join(__dirname,"../public")
 app.use(express.static(publicDirectory))
 
+dotenv.config();
+app.use(cors())
+const PORT=process.env.PORT;
 
 // This is at the root route
 app.get('/',(req,res)=>{
@@ -65,8 +70,8 @@ res.send('<h1>Welcome to the Weather App</h1>')
     // The process of starting up a server isn't a synchronous process though it'll happen almost instantly.
     
 
-app.listen(3000,()=>{
-    console.log("Server is Running at PORT 3000")
+app.listen(PORT,()=>{
+    console.log("Server is Running at PORT "+PORT)
 })
 
 // This is just going to display as a useful piece of information when running the application down below.
@@ -122,8 +127,8 @@ app.get('/about',(req,res)=>{
 })
 
 // app.get("/weather",(req,res)=>{
-//     // res.send("Weather Page")
-//     // Challenge Ans
+   // res.send("Weather Page")
+     // Challenge Ans
 //     res.send({
 //         forecast:"It is snowing",
 //         location:"Philadelphia"
@@ -145,20 +150,39 @@ app.get('/about',(req,res)=>{
 //     })
 // })
 
+
+// Do using Geo Code
 app.get("/weather",(req,res)=>{
     if(!req.query.address){
         res.send({
             error:"No address? Pass an address"
         })
-    }  
-    geoCode(req.query.address,(error,{latitude,longitude})=>{
+    } 
+    geoCode(req.query.address,(error,{lat,lon,place}={})=>{
+        if(error){
+            res.send({
+                error:error
+            })
+        }   
+        forecast(lat,lon,(error,forecastData)=>{
+            if(error){
+                res.send({
+                    error:error
+                })
+            }
+            res.send({
+                forecast:forecastData,
+                location:place,
+                address:req.query.address,
+                lat,
+                lon,
+                place
+            })
 
-    }) 
-    res.send({
-        forecast:"It is snowing",
-        location:"Philadelphia",
-        address:req.query.address
+        })   
+        
     })
+   
 })
 
 
