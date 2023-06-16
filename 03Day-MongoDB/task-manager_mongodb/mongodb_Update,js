@@ -1,0 +1,32 @@
+const {MongoClient,ObjectId}=require('mongodb')
+const connectionString = "mongodb://127.0.0.1:27017/"
+const databaseName = 'task-manager-local2'
+
+async function createConnection(){
+    const client=new MongoClient(connectionString)
+    await client.connect();
+
+    const db=client.db(databaseName)
+
+    const result=await db.collection('users').updateOne({
+        _id: new ObjectId("648c5923701a5b307d0dd75d")
+    },{
+        $set:{
+            name:"Mike"
+        }
+    })
+
+    const result1=await db.collection('users').updateOne({
+        _id: new ObjectId("648c5923701a5b307d0dd75d")
+    },{
+        // increment age by 1
+        $inc:{
+            age:1
+        }
+    })
+
+    console.log(result1)
+
+    
+}
+createConnection()

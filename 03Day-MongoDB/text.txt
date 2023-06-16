@@ -40,7 +40,67 @@ Collections:
 
  installation:
  Download and innstall
- after that create mongodb-data 
+
+ mongosh download separately and paste it
+
+MongoDb Docs
+Lets go the MongoDb Docs
+https://www.mongodb.com/
+
+Docs:
+http://mongodb.github.io/node-mongodb-native/?jmp=docs
+
+We are going to connect to your Mongo DB database from a nodeJS application
+and we are going to learn CRUD as well.
+
+Now to get all of this done we'll be using the MongoD.B. native driver.
+
+For that we are going to use the NPM Module and its going to allow us to interact with our database from node 
+
+Let's head over to the browser and explore this native driver.
+http://mongodb.github.io/node-mongodb-native/?jmp=docs
+
+https://www.mongodb.com/docs/drivers/node/current/
+
+https://mongodb.github.io/node-mongodb-native
+
+This is the documentation , we will be using it .
+
+>Create taskmanager
+cd taskmanager
+
+npm install mongodb
+npm init -y
+
+Now, we are ready and perform all the CRUD operations
+
+crud
+ so create mongodb.js
+ 
+ insertOne
+ insertMany
+
+ ObjectId:
+ _id:
+ this field is automatically created by Mongo D.B. and it stores a unique identifier for each document you insert into the database.
+
+these server generates the I.D. for new records and it follows that auto incrementing integer pattern where the first record has the idea of one.
+
+the ids are known as GUI.D. which stands for globally unique identifiers and these are a bit different.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
 
 
