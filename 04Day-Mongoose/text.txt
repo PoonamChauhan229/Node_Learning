@@ -1,0 +1,100 @@
+REST API and Mongoose
+Till Now,we know 
+how to interact with a database using nodeJS
+
+Well we're going to do is start to create our very own express based REST API using what we now know about data storage.
+
+This is going to allow a user to perform an operation such as >signing up for a new account 
+>creating a task 
+>fetching a list of all of the tasks they still need to complete
+
+Now along the way we're also going to explore Mongoose 
+mongoose is a really popular library when working
+with node and Mongo D.B..
+It gives us a really easy system for modeling our data for modeling things like a user or a task.
+
+We'll be able to set up the various fields and data types as well as things like data validation which is going to make our lives a lot easier and our applications more secure.
+
+we're going to explore a new tool that will be making heavy use of as we create the task manager application.
+
+This is the very popular NPM module called Mongoose now mongoose is directly related to mongo D.B. and it's going to allow us to do some of the things that we don't know how to do so far.
+
+it's going to allow us to do some of the things that we don't know how to do so far.
+
+For example we know how to use Mongo D.B. to create documents read a documents update and delete them.
+
+But what about other equally important things.
+
+For example how do I set up validation for my documents defining which fields are required and which are optional and what types of data I expect for them.
+
+For example I don't want someone to be able to set that completed field equal to a string.
+I want to require that it's a boolean.
+
+Now with Mongoose we can also do other things we're not able to do.
+mongoose is going to allow us to get all of those new things done while still being able to perform our basic CRUD operations on the Mongo D.B. database.
+
+Now before we integrate anything into our project let's view mongoose in the browser.
+
+mongoosejs.com
+
+documentation of mongoose is far easy.
+
+
+Mongoose right here is just connecting to the database.
+
+Model:
+the next thing  it creates an model 
+a model allows us to model something in the real world that we want to store in the database.
+So we create models for all of the collections that we want and then we use the model to describe the data.
+
+Creating an Instance:
+They create a new instance which stores that new instance and they set the name
+
+Manipulate:
+Then they use various methods on that model to manipulate it.
+
+save:
+.save() method will save the data.
+
+
+And this provides a much nicer interface for interacting with Mongo D.B. instead of needing to use all of the low level API methods which we explored.
+
+goose falls into a broader category of tools no one as ODM
+And ODM stands for object document mapper.
+And as that name suggests the goal is to allow you to map your objects in your code.
+So for us objects in our nodeJS application over two documents inside of the Mongo D.B. database.And that's exactly what mongoose is going to let us do.
+
+Lets start with mongoose with an basic example
+npm i mongoose
+
+Let us restructure the directory.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
