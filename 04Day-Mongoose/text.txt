@@ -69,6 +69,44 @@ npm i mongoose
 
 Let us restructure the directory.
 
+basic validation
+built in validation
+Strings have enum, match, minLength, and maxLength validators.
+
+Mongoose provides us with custom validation.
+so we can go ahead and set up custom validation.
+
+validate(){
+
+}
+validate is equal to an function
+
+For validation purpose we have 1 NPM module
+npm i validator
+
+We will check the email.
+
+Schema Types:
+String
+Number
+Date
+Buffer
+Boolean
+Mixed
+ObjectId
+Array
+Decimal128
+Map
+Schema
+UUID
+BigInt
+(REfer the documentation)
+
+REST API:
+Rest stands for representational state transfer 
+API stands for application programming interface.
+
+
 
 
 

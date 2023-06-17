@@ -11,7 +11,7 @@ const User=mongoose.model('User',{
         type:String
     },
     age:{
-        type:Number
+        type:Number        
     }
 })
 
