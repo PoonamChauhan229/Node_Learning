@@ -107,6 +107,36 @@ Rest stands for representational state transfer
 API stands for application programming interface.
 
 
+Creating an Endpoints:
+Install
+npm i express nodemon
+Model Folder
+index.js
+
+Update the scripts as well
+ "scripts": {
+    "start":"node 02AyncAwait-Route_Endpoints/src/index.js",
+    "dev":"nodemon 02AyncAwait-Route_Endpoints/src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+  "start":"node 01Promise-Route_Endpoints/src/index.js",
+    "dev":"nodemon 01Promise-Route_Endpoints/src/index.js",
+
+  Routing:
+  const express=require('express')
+const app=express()
+const PORT=process.env.PORT || 3000
+
+
+app.listen(PORT,()=>{
+    console.log('Server started at Port',PORT)
+})
+
+Files Related to Routes
+
+
+
 
 
 
