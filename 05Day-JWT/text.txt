@@ -1,0 +1,61 @@
+Authentication and data security:
+Password:
+we take the password in from the user and we store it in the database exactly as they typed or provided
+This is known as storing the password in plain text and for passwords.This is a terrible idea.
+
+Now the problem with storing plain text passwords is that most users use these same password for multiple accounts.
+So let's say our database did get hacked.
+Sure someone would be able to access the task data for all of the users.
+So Someone could try to use these same credentials for online banking and email a PayPal account or something
+So we don't want to store the password in plain text because we are leaving users exposed to further problems.
+it's our job as developers to do our best to keep things secure in a world where we don't have complete So the solution is to store not a plain text a password but a hashed password the hashed value is going to look nothing like the plain text password.
+
+And if someone was to hack the database and get a hold of all of the users hashed passwords they would be useless because the algorithm we're going to use to generate it is not reversible.
+
+we can get access to an implementation of the Bcrypt algorithm in our nodejs code by installing
+and using an NPM module.
+
+So lets install it.
+
+npm i bycryptjs
+
+Its a super popular library and it's going to give us a few functions we can use to securely store and work with passwords.
+
+Intergration of Passwordhashing in TaskManager App.
+
+Create User route
+Post users this is when a user is created and it's impossible to create a user without providing a password.
+So when someone is signing up we definitely want to make sure to hash that plaintext password.
+
+Update User route
+When a user is updated now they could be updated and have the password stay the same.Then maybe just update the name.
+But there is a chance that a new password is provided and if it is provided we want to make sure we hash it.
+
+For using this,we have to customize our User model
+
+Mongoose supports middleware
+middleware as a way to customize the behavior of your Mongoose model and it's going to allow us to do some pretty interesting things to explore this.
+
+Let's head over to the Mongoose documentation and under guides we have a middleware 
+
+with middleware,we can register some functions to run before or after given events occur.
+
+So for example validate.I could run some code just before or just after a user is validated.
+
+Okay....
+
+I could also run some code just before or just after a user is saved and we have other events down below as well.
+In our case we want to focus on Save Our job is to run some code just before a user is saved.
+
+We're gonna check if there's a plain text password and if there is we'll go ahead and hash it.
+
+Now to actually get this done we'll need to head over to the user model and do a little bit of restructuring to take advantage of this more advanced feature.
+
+Lets do it.
+
+Step1: Create the schema
+Step2: Pass it to the model
+Step3: on the createdSchema, use pre or post depending upon the scenario/requirement.
+We will using pre 
+
+
