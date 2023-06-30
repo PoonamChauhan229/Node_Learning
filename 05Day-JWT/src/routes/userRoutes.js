@@ -4,16 +4,38 @@ const router=new express.Router()
 router.get('/test',(req,res)=>{
     res.send("New Route")
 })
+
+router.post('/users/login',async (req,res)=>{
+   // This is the end point we'll use to log in with the existing account.
+   //Now it's the job of this function to find a user by those credentials by the email and the password.
+   //create an reusbale function in UserModel.js and use it here.
+   try{
+    const userLogin=await User.findByCredentials(req.body.email,req.body.password)
+    //create token that will be sent to the user
+    //async and awit function
+    //the below function would be created for specific user not on the UserModel
+    const token=await userLogin.generateAuthToken()
+    res.status(200).send({userLogin,token})
+   }catch(e){
+    res.status(400).send(e)
+   }
+})
+
+// Creating an User Route
 router.post('/users',async (req,res)=>{
     console.log(req.body)
     // creating an user
     const userData=new User(req.body)
+    
 
     // Using Promise
     // userData.save().then((userData)=>res.status(200).send(userData)).catch(err=>res.status(400).send(err))
 
     try{
+
         await userData.save()
+        const token=await userData.generateAuthToken()
+    res.status(200).send({userData,token})
         res.status(201).send(userData)
     }catch(e){
         res.status(400).send({message:e})

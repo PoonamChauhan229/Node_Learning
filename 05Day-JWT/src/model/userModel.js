@@ -1,3 +1,4 @@
+const jwt=require('jsonwebtoken')
 const mongoose=require('mongoose')
 const validator=require('validator')
 // create the schema and pass it on to the model
@@ -23,6 +24,7 @@ const userSchema=new mongoose.Schema({
     email:{
         type:String,
         lowercase:true,
+        unique:true,
         trim:true,
         validate(value){
             if(!validator.isEmail(value)){
@@ -40,10 +42,48 @@ const userSchema=new mongoose.Schema({
                 throw new Error("Password should not contain password")
             }
         }
-    }
+    },
+    // add token to each user
+    // tokens: array of objects
+    tokens:[{
+        token:{
+            type:String,
+            required:true
+        }       
+    }]
 
 })
 
+userSchema.methods.generateAuthToken=async function(req,res,next){
+    //methods are accessible on instance
+    const user=this
+    //generate a jwt token
+    const token=jwt.sign({_id:user._id.toString()},'thisismynewcourse')
+    //token generated, add to the tokens array in usermodel
+    user.tokens=user.tokens.concat({token:token})
+    //save() method=>token should save to the DB
+    await user.save()
+    return token
+}
+
+//Login and attaching to userschema
+userSchema.statics.findByCredentials=async(email,password)=>{
+     //first finf by email
+     const userSignin=await User.findOne({email:email})
+     if(!userSignin){
+        throw new Error("Email Address Not found")
+     }  
+    //  Match the password
+     const isMatch=await bcrypt.compare(password,userSignin.password)
+     if(!isMatch){
+        throw new Error("Unable to Login")
+     }
+     console.log(userSignin)
+     return userSignin
+
+}
+
+//hash the plaintext password before saving
 // pre takes 2 args 
     // > name of the event
     // > function to run and it should be an standard function, this takes next as an parameter 

@@ -58,4 +58,83 @@ Step2: Pass it to the model
 Step3: on the createdSchema, use pre or post depending upon the scenario/requirement.
 We will using pre 
 
+//This is done
+
+login
+We will provide new endpoint that will allow them to login with their existing account 
+so they'll have to provide their credentials their email and password 
+and it will be the job of that route to verify that there is a user with those credentials.
+
+
+1-Set up an New Route.
+2-Create an resuable function for finding a user by their credentials by their email and password in UserModel.
+
+After this we have to make someone login , verify email and password and then only create the task.
+
+Singlt express Router will fall into 2 categories.
+public >> Rest all the Routes.(Everyone can access)
+private >> Signup and Login Route (Which requires authentication)
+
+What we need to do is set up the log in request to send back and authentication token.
+
+So I could log in with my account I'd get the token back then I could go off and edit my user profile or do something else like create a new task.
+we're going to create and manage those authentication tokens.
+
+For this, we have to use JSON Web token ie. JWT
+It can be used for all sorts of things including authentication and with JWTs we'll be able to setup everything we want for our little authentication system.
+tokens expire after a certain amount of time 
+
+So let us Install JWT.
+npm i jsonwebtoken
+
+Generating JSON WEBTOKEN:
+=>log in end point
+=>Generate a JSON Web token and send it back to the user
+=>the exact same thing for signing up
+=>both of these requests are going to end up sending back JWT authentication tokens.
+=>we'll create another function we can reuse whenever we need to generate an authentication token
+=>because we would need not duplicate at both places.
+=>we're going to create a function that returns the token in that token will get sent to the user.
+=>create that function to return a promise.
+=>we will use await to actually get the token back since that function is going to do asynchronous things.
+Login Route:
+In this case though we're trying to generate a token for a very specific user.
+
+Steps:
+
+
+
+SignUp Also 
+Create user Route:
+
+
+Express Middleware:
+=>API is sending back authentication tokens When users sign up or log in
+=>how those tokens are gonna be used to actually authenticate other requests
+=>every single request to the API is going to require authentication with the exception of sign up and log in for everything 
+=>else the client is going to need to provide that authentication token
+
+Express middleware:
+which is going to be at the core of allowing us to get all of this done to get started.
+
+//Till now we did this
+So the new request comes in Express maps to the correct route and that function gets executed.
+
+Without Middleware=> new request => run route handler
+
+With Middleware=> new request => do Something => run route handler
+    -Now with middleware we can customize the behavior of the server to fit our needs
+    -There's a step added in the middle so we still have a new request coming into the express server but then we do something now.
+    -This something is nothing more than a function that runs and we can set up this function to do whatever we'd like.
+    -Maybe we want to log out some statistics about their request so we can keep track of it in our server logs or maybe we want to check if there is a valid authentication token.
+    -Now once the middleware runs we can continue to choose to run the regular route handler so the given operation is completed successfully.
+
+express middleware should be above all the app.use()
+app.use()// this should be first line
+
+
+
+
+
+
 
