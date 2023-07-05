@@ -48,6 +48,15 @@ router.post('/users',async (req,res)=>{
     }
 })
 
+//logout route
+router.post('/users/logout',auth,async(req,res)=>{
+    try{
+        //
+    }catch(e){
+        res.status(500).send()
+    }
+})
+
 // Get all the Users
 //And the problem is that it exposes the data for other users.
 //So this route, doesnt any purpose anymore but we are going to repurpose it for something

@@ -45,4 +45,55 @@ So we need to test production endpoints
 Dozen of request again and again swapping up.
 
 Click on settings icon=>
+Task Manager API(dev)
+Task Manager API(prod)
+
+Added the url: localhost:3000/
+and click on add
+
+Now to use it {{url}} instead of localhost:3000/
+
+Now, in case in future, we have to change an URL, we can just update the environment varaibles.
+
+Authentication :
+2nd=> Bearer and Authorization
+This is working only in Get profile
+
+Go to Authorization:
+Select Bearer Token:
+paste te token in it.
+
+Task Manager collection
+Click on ... dots
+Go to Authorization
+Bearer Token:
+Update it
+
+Login and create
+No Auth under Authorization.
+
+
+Now, we will put JS code little bit to perform automation.
+
+Now, we need to automate the token as well
+We will again to ... dots of collection.
+
+Authorization: 
+Token: {{authToken}}
+This as of now doesnt exists.
+
+We will write some code and set up.
+Now, inside Test Tab in the login
+if(pm.response.code===200){
+pm.environment.set('authToken',pm.response.json().token)
+
+}
+
+This will to automate and save the token without passing it manually.
+
+LogOut:
+
+Now add an Logout Route
+Add below signup and login.
+
 
