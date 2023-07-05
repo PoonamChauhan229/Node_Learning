@@ -1,0 +1,48 @@
+Accepting an Authentication Token:
+
+setting up an express middleware function 
+=>add authentication application
+
+****
+In this case will check for an incoming authentication token it will verify that ,it is a valid JSON web token, then it will find the associated user
+****
+
+Creating middleware to be used throughout your app it's best to define it in a separate file so we can keep things nice and organized
+
+>src> Middleware/auth.js
+
+the whole authentication process starts with 
+=>the client taking that authentication token that they get from signing up or logging in 
+=>and providing it with the request.
+
+After the Login Request,
+Take the authentication token showing up.
+Grab the authentication token that was just created and sent back with the last login request
+
+Setup in an request header
+and put  Key and Value in Get all users request.
+
+Key:Authorization
+Value: Bearer token
+        Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDkwMDdlNmFlMGQ4MjU3Nzk4MTE4NTkiLCJpYXQiOjE2ODgxMzY2MzR9.0vHeCVZGFZtQ-L5p-O-RNcyuulE8h708-FCv0rW0xSU
+
+This is the information necessary to get authenticated.
+how to access this information and then validate it from our server?
+
+After doing this, let go to auth.js file.
+
+Now, we have set up an proper authentication.
+load two things 
+=>Load any JSON web token library so we can validate the token being provided
+=>Load the User model so we can find them in the database once we've validated the off token.
+
+Advanced postman features:
+
+1-Set up an Environment.
+Now, working on localhost its fine
+but in future, we would deploy and url would change.
+So we need to test production endpoints
+Dozen of request again and again swapping up.
+
+Click on settings icon=>
+

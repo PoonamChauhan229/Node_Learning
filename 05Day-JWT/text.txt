@@ -132,6 +132,8 @@ With Middleware=> new request => do Something => run route handler
 express middleware should be above all the app.use()
 app.use()// this should be first line
 
+Register an Middleware 
+
 
 
 
