@@ -1,161 +1,32 @@
-Accepting an Authentication Token:
-
-setting up an express middleware function 
-=>add authentication application
-
-****
-In this case will check for an incoming authentication token it will verify that ,it is a valid JSON web token, then it will find the associated user
-****
-
-Creating middleware to be used throughout your app it's best to define it in a separate file so we can keep things nice and organized
-
->src> Middleware/auth.js
-
-the whole authentication process starts with 
-=>the client taking that authentication token that they get from signing up or logging in 
-=>and providing it with the request.
-
-After the Login Request,
-Take the authentication token showing up.
-Grab the authentication token that was just created and sent back with the last login request
-
-Setup in an request header
-and put  Key and Value in Get all users request.
-
-Key:Authorization
-Value: Bearer token
-        Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDkwMDdlNmFlMGQ4MjU3Nzk4MTE4NTkiLCJpYXQiOjE2ODgxMzY2MzR9.0vHeCVZGFZtQ-L5p-O-RNcyuulE8h708-FCv0rW0xSU
-
-This is the information necessary to get authenticated.
-how to access this information and then validate it from our server?
-
-After doing this, let go to auth.js file.
-
-Now, we have set up an proper authentication.
-load two things 
-=>Load any JSON web token library so we can validate the token being provided
-=>Load the User model so we can find them in the database once we've validated the off token.
-
-Advanced postman features:
-
-1-Set up an Environment.
-Now, working on localhost its fine
-but in future, we would deploy and url would change.
-So we need to test production endpoints
-Dozen of request again and again swapping up.
-
-Click on settings icon=>
-Task Manager API(dev)
-Task Manager API(prod)
-
-Added the url: localhost:3000/
-and click on add
-
-Now to use it {{url}} instead of localhost:3000/
-
-Now, in case in future, we have to change an URL, we can just update the environment varaibles.
-
-Authentication :
-2nd=> Bearer and Authorization
-This is working only in Get profile
-
-Go to Authorization:
-Select Bearer Token:
-paste te token in it.
-
-Task Manager collection
-Click on ... dots
-Go to Authorization
-Bearer Token:
-Update it
-
-Login and create
-No Auth under Authorization.
-
-
-Now, we will put JS code little bit to perform automation.
-
-Now, we need to automate the token as well
-We will again to ... dots of collection.
-
-Authorization: 
-Token: {{authToken}}
-This as of now doesnt exists.
-
-We will write some code and set up.
-Now, inside Test Tab in the login
-if(pm.response.code===200){
-pm.environment.set('authToken',pm.response.json().token)
-
-}
-
-This will to automate and save the token without passing it manually.
-
-LogOut:
-
-Now add an Logout Route
-Add below signup and login.
-
-And also add logout all Route
-
-
-Hiding the Private Data:
-how we can better secure the user profile
-
-First Login in with the user in postman
-When we fire Off, we get 2 properties:
-1-user
-2-token
-Both of these are going to stay.
-
-We are sending back the data, which is not a problem 
-But we also sending
-=> Password
-Passwords should be secured to the utmost extent and exposing them is never gonna be something we want to do even if it's to a logged in user.
-There's no reason they would ever need this data as it's hashed and it's not useful to them.So it's best to lock that down.
-=>Token
-Also the tokens are right.
-There's no need to expose all of the authentication tokens with the user profile.
-
-How we can hide both of these when we're sending data back to the client to get this done we'll be making a few changes to the application and
-
-let's go ahead and start
-user router to the log in request both.
-
-SIgnup and login send the tokens and password.
-
-There are2 ways of doing it.
-1-manual
-2-Automate
-
-userModel.js
-
-We will do the automated one 
-
-
-Authenticating Other Routes ||| user EndPoints:
-Couple of Routes arent using the Authentications:
-
-We will be focuing on:
-GET        USER     BYID  =>NOT NEEDED => This work is done the another Route =>users/profile/me
-DELETE     USER     BYID
-PATCH      USER     BYID
-
-Users must be able to edit and update their profile
-Users must be able to DELETE their profile.
-
-So we will do little bit of refactoring integration of authentication and then wiring up with the work.
-
-Lets go the delete router and add the authentication.
-This will only run now , if user is authenticated.
-
-So, here now, we will change the path of the route as we dont want any other user to be deleted.
-router.delete('/users/me',auth,async(req,res)=>{})
-
 User Task Relationship:
 Create a relationship between a user and the tasks that they've created.
 
 This is going to be important to make sure that users can only access and manage their tasks and that they can't mess with someone else's.
+
+We will be working in 3 files.
+1-userModel.js
+2-TaskModel.js
+3-Index.js
+4-TaskRouter.js
+
+
+TaskModel.js
+
+2ways we can set up the relationship between the user and task.
+1- The user should store te individual Task ID
+2-individual task should store the Id of the user who created.
+
+2nd Approcah we will follow.
+for that, we will set up an another field in TaskModel.js
+owner:{
+        type:mongoose.Schema.Types.ObjectId,
+        required:true
+}
+
+Next go to TaskRouters
+Load in the middleware.
+
+
 
 
 

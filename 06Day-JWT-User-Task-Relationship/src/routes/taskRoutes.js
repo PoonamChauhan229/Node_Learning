@@ -1,11 +1,18 @@
 const express=require('express')
 const router=new express.Router()
 const Task=require('../model/taskModel')
+// Load in auth route and pass it to the route
+const auth=require('../middleware/auth')
 
-// Task
-router.post('/task',async (req,res)=>{
-    const taskData=new Task(req.body)
+// create Task
+router.post('/task',auth,async (req,res)=>{
+    // const taskData=new Task(req.body)
     //taskData.save().then((taskData)=>res.status(200).send(taskData)).catch(err=>reset.status(400).send(err))
+    const taskData=new Task({
+        ...req.body,
+        owner:req.user._id
+    })
+    
     try{
         await taskData.save()
         res.status(201).send(taskData)
