@@ -12,8 +12,12 @@ const Task=mongoose.model("Task",{
     },
     owner:{
         type:mongoose.Schema.Types.ObjectId,
-        required:true
+        required:true,
+        ref:'User'//MOdel Name
     }
+    //We will get the object id who was authenticated.
+    //This is going to be the piece of data that links tasks to their owner
+    
 })
 
 module.exports=Task

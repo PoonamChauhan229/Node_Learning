@@ -91,3 +91,32 @@ const myFunctionjwt=async()=>{
 myFunctionjwt()
 
 
+const FetchbytaskRelationship=async(req,res)=>{
+    const task=await Task.findById('64a7fbb5a0bcdc9813c8faee')
+    // Line to get the userprofile of that user who craeted the task
+    await task.populate('owner')
+
+    console.log(task.owner)
+    //if i want to find the user of the task who created it.
+    //with mongoose There's a way to actually set up the relationship between user and task with some helper functions
+    //Need to set up , 1 additional property in owner in task feild
+    //ref:'User'// reference to a another model.//Model Name
+//We have a relationship between task and user who created it, using populate()
+}
+FetchbytaskRelationship()
+
+const FetchbyuserRelationship=async(req,res)=>{
+    const user=await User.findById('64a6cc2fd9554bf8af4a9def')
+    // Line to get the userprofile of that user who craeted the task
+    await user.populate('taskRel')
+
+    console.log(user.taskRel)
+    //if i want to find the user of the task who created it.
+    //with mongoose There's a way to actually set up the relationship between user and task with some helper functions
+    //Need to set up , 1 additional property in owner in task feild
+    //ref:'User'// reference to a another model.//Model Name
+//We have a relationship between task and user who created it, using populate()
+}
+FetchbyuserRelationship()
+
+

@@ -26,6 +26,27 @@ owner:{
 Next go to TaskRouters
 Load in the middleware.
 
+And once we get the owner details.
+
+we're going to use that to make sure that someone can actually read a given task that they can update a given task and that they can delete a given task.
+If I'm trying to delete a task I need to be able to confirm on the server that I'm the one who created it
+
+Lets go to
+index.js
+
+
+
+Now, We have taken a task and find out the user
+Now, lets do the otherway:
+Lets have a user and find out the thier task.
+
+
+Now, the last is what if the user profile get deleted then the task associated with it should also get delete.
+
+
+
+
+
 
 
 

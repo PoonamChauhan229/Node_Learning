@@ -4,7 +4,7 @@
 // lets add it to get all users route and test
 // in other routes, you wont get the console.log message beacause they dont use the middleware.
 const auth=require('../middleware/auth')
-
+const Task=require('../model/taskModel')
 const express=require('express')
 const User=require('../model/userModel')
 const router=new express.Router()
@@ -140,21 +140,25 @@ router.patch('/users/me',auth,async(req,res)=>{
 // Delete By ID
 router.delete('/users/me',auth,async(req,res)=>{
     try{
-        // route chnaged so we cant get req.params.id
+         // route chnaged so we cant get req.params.id
 
-        // 1st way:
-       const deleteUser=await User.findByIdAndDelete(req.user._id)
+         // 1st way:
+     const deleteUser=await User.findOneAndDelete({_id:req.user._id})
 
-        // const deleteUser=await User.findByIdAndDelete(req.params.id)
+         // const deleteUser=await User.findByIdAndDelete(req.params.id)
         if(!deleteUser){
             res.status(404).send({message:"User Deleted and Not Found"})
         }
+         // Delete associated tasks
+        await Task.deleteMany({ owner:deleteUser._id });
         res.status(200).send(deleteUser)
     }catch(e){
         res.status(500).send({message:"Error"})
     }
 
-})
+});
+
+ 
 
 
 module.exports=router

@@ -1,6 +1,8 @@
 const jwt=require('jsonwebtoken')
 const mongoose=require('mongoose')
 const validator=require('validator')
+
+const Task=require('./taskModel')
 // create the schema and pass it on to the model
 // 1 line we need to add known as a schema in order to take advantage of the middleware functionality.
 
@@ -53,6 +55,23 @@ const userSchema=new mongoose.Schema({
     }]
 
 })
+
+
+//we're going to do is set up what's known as a virtual property a virtual property is notactual data stored in the database.
+//It's a relationship between two entities.
+//In this case between our user and our task to start off we'll be using something on user schema.
+//It is called the virtual and it allows us to set up one of these virtual attributes
+//Now it's virtual because we're not actually changing what we store for the user document
+//it is just a way for a mongoose to figure out how these two things are related.
+//2 parameters=>
+    //1st is just an name (userdefined)
+    //2nd => set up an object
+userSchema.virtual('taskRel',{
+        ref:'Task',// Task Model
+        localField:'_id',//local data is stored// owner Object ID which is associted with task==> Object ID of user
+        foreignField:'owner'//name of the feild on the other Model , ie in the task that is been used for creating an relationship => user id
+    })  
+
 
 // removing the password and tokens from the login and Signup
 userSchema.methods.toJSON=function(){
@@ -123,6 +142,16 @@ userSchema.pre('save',async function(next){
     }
    next();
 })
+
+//Create an Middleware
+//Delete user tasks when the user is removed.
+// userSchema.pre('findOneAndDelete',async function (next) {
+//     console.log("deleted user");
+//     const user = this;
+//     console.log(user._id);
+//     await Task.deleteMany({ owner: user._id });
+//     next();
+//   });
 //Define the model
 const User=mongoose.model('User',userSchema)
 module.exports=User;
