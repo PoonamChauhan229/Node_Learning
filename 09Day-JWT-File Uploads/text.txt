@@ -1,0 +1,75 @@
+data sorting filtering and Pagination, Timestamps
+=====================================================
+>Working with the Timestamps:
+
+how we can enable Timestamps for our Mongoose models.
+Doing this for both our users and our tasks.
+
+enabling an option that's going to add it to new fields one called created at and a another called updated at.
+Both are going to store timestamps so they're going to store the moment in time when that event occurred
+
+We have to customize these schema we've created.
+{
+    timestamps:true
+}
+Added to both the schemas.
+
+========================================================
+Filtering out the data.
+Task Route:
+get all Task route.
+
+setting up the query string:
+/tasks?completed=true
+/tasks?completed=false
+
+req.query.completed
+
+Now, we have populate the tasks
+.populate({
+        path:'tasks',
+        match:{
+                completed
+        }
+})
+
+
+===========================
+
+Pagination:
+limit
+skip
+
+limit=>limit allows us to limit the number of results we get back for any given request.
+skip means how much no of data at the start you want to skip.
+/tasks?limit=2&skip=2
+Well we have access to set on options is both limit and skip
+options:{
+        limit:2,
+        skip:2
+
+}
+
+===============================================================
+Sorting Data:
+
+Sort the Data in a specific Order:
+=> SOrt the task when they were last created or last updated
+=> SOrt the task by completed(-1) or incompleted(1)
+1st by fields and then by asc(1) desc(-1).
+
+/task?sortBy=createdAt_asc
+/task?sortBy=createdAt_desc
+
+OR
+
+/task?sortBy=createdAt:asc
+/task?sortBy=createdAt:desc
+
+
+options:{
+        sort:{
+                createdAt:1//asc
+                createdAt:-1//desc
+        }
+}
