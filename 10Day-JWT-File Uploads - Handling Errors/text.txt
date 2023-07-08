@@ -1,96 +1,14 @@
-We know how to send a basic JSON data from the client to the server and from the server to the client
+Handling Error:
+how to customize the errors that get sent back when the file upload fails.
 
-The question is how do we do this with images?
+Whether it's because the file is not of the right type or whether it's because it's too large and doesn't meet the file size limitation we've set.
 
-What we want to do is allow 
-the client to upload an image to the server
-we want to store that image in the database 
-we want the server to be able to serve it up 
-so the client can access it later on.
+Either way we can go ahead and send back a Jason error message instead of trying to render this HTML
 
-allow users to upload a profile picture
-
-They'll send it off to the server and we'll do a little processing on our end cropping it to fit our needs.
-
-==========================
-How we can add support for file uploads to the Express application.
-
-we'll be integrating and we can check out the NPM package
-install a package multer
-
-npm i multer
-https://www.npmjs.com/package/multer
-
-Till Now,
-So far the only data we've sent from the client to the server has been JSON data.
-We've provided that JSON as the request body and the server has passed that Jason into a javascript object and we've used it.
-
-When it comes to file uploads we're no longer going to send a JSON body.
-Instead we'll be using form data.
-So right here this is what's going to allow us to upload files.
-So we're gonna take the file 
-=>grab it's binary data 
-=>send that off to the server.
-
-basic example:
-npm i multer
-
-Lets go in index.js to have a basic example.
-Postman
-=> indide Body
-Select Form data
-
-This is where we can specify the binary data for a file whether it's an image or something else that we want to upload to the server
-Key:
-
-Now the key you type in needs to match up exactly with the value you provided to single 
-upload.single('upload')
-in this case it is upload
-and change Text to File
-
-It will pass and we check in the images folder which was created automatically 
-
-Now if we try to open this file in Visual Studio code we're gonna get the following error 
-VSC is complaining because it's binary data and it doesn't know how to render the file contents.
-
-The only reason that's the case has to do with the file name so right here we have a file name which is just a randomly generated series of characters.
-We'll learn how to address this a bit later.
-
-The problem is that there's no file extension.
-We can preview the image to make sure it's the right one we uploaded by clicking.
-Rename using the right arrow to go to the end and just adding the same file extension as the original file we uploaded which was done JPG.
-When we do this visual studio code we'll learn how to correctly pass the image.
-And now we can open it up just to preview it so we won't need to manually change file extensions in
-the future.
+===================
+Now, Add Images to the User Profile.
 
 
-Next we are suppose to do it in User Router 
-Setup an endpoint for avatar upload
-endpoint: /users/me/avatar
-
-
-========================================
-Adding Validation to the files.
-We will validate 
-=>file size
-=>file type
-
-We can give limit to 1 megabyte or 2 megabyte
-
-
-fileFilter
-endswith
-
-Now, here we will pass an Regular expression
-https://regex101.com/
-file.doc
-\.=>.
-followed by by text
-\.doc
-$=> endswith
-
-file.docx
-\.(doc|docx)$
 
 
 

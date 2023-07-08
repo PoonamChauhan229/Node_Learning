@@ -172,20 +172,20 @@ const upload=multer({
         //Api=> originalname
         //Now, if the file is an Pdf => No error
         // if(!file.originalname.endsWith('.pdf')){
-            if(!file.originalname.match(/\.(doc|docx|jpg)$/)){
-            return cb(new Error('file must be an word'))
+            if(!file.originalname.match(/\.(png|jpeg|jpg)$/)){
+            return cb(new Error('Please upload an Image'))
         }
         //error
         // cb(new Error('file must be an PDF'))
         //accept the file
         cb(undefined,true)
     }   
-
-
 })
 
 router.post('/users/me/avatar',upload.single('avatar'),async(req,res)=>{
     res.send({message:"Image Uploaded Successfully"})
+},(error,req,res,next)=>{
+    res.status(400).send({error:error.message})
 })
 
 
