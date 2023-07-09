@@ -8,6 +8,44 @@ Either way we can go ahead and send back a Jason error message instead of trying
 ===================
 Now, Add Images to the User Profile.
 
+how to create a link between the image uploaded and the user who actually uploaded it?
+
+Right now all of the Avatar pictures are being dumped into a directory and there's no link between the user who created it and the image that was uploaded.
+
+This route isn't even behind authentication so those are all things we want to fix.
+
+=>put the route behind authentication
+=>then we'll create a place on the User model for the image data to be stored.
+
+=>finally we'll be creating a separate route that authenticated users can use to delete a profile picture they've set.
+
+the only difference is that this route already has one piece of middleware in place that is multer
+
+So we want to make sure they're authenticated before we worry about accepting their upload because if they're not authenticated we would never accept the upload.
+
+So initially, it was directly getting stored to the destination folders.
+so we will remove that from the destination folder.
+as we remove now it will pass the image, but wont save to the destination folder.
+As we want to save it to the user profile.
+
+Once its saved, to the database,
+let check out in the browser
+so we will copy the binary data of avatar and head it towards the browser.
+
+We will use Jsbin
+https://jsbin.com/
+
+<img src="data:image/jpg;base64, binary image data"/>
+
+
+Serving up the Files:
+Another approach to render the image
+
+First set up an GET request.
+
+
+
+
 
 
 

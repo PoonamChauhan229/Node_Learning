@@ -162,7 +162,7 @@ router.delete('/users/me',auth,async(req,res)=>{
 //Uploading images
 
 const upload=multer({
-    dest:"avatars",
+    // dest:"avatars",
     limits:{
         fileSize:1000000
     },
@@ -182,11 +182,32 @@ const upload=multer({
     }   
 })
 
-router.post('/users/me/avatar',upload.single('avatar'),async(req,res)=>{
+router.post('/users/me/avatar',auth,upload.single('avatar'),async(req,res)=>{
+    //Now, we will pass the validated data through our cb function
+    req.user.avatar=req.file.buffer
+    await req.user.save()
     res.send({message:"Image Uploaded Successfully"})
 },(error,req,res,next)=>{
     res.status(400).send({error:error.message})
 })
 
+router.delete('/users/me/avatar',auth,upload.single('avatar'),async(req,res)=>{
+    //Now, we will passs undefined as we want to clear it off
+    req.user.avatar=undefined
+    await req.user.save()
+    res.send({message:"Image Deleted Successfully"})
+},(error,req,res,next)=>{
+    res.status(400).send({error:error.message})
+})
+
+//Another approach to render the image
+router.get('/users/:id/avatar',async(req,res)=>{
+    //Now, we will passs undefined as we want to clear it off
+    const userImage=User.findById(req.params.id)
+    console.log(userImage)
+    res.set('Content-Type','image/jpg')
+    res.send(userImage.avatar)
+    // res.send({message:"Image Viewed Successfully"})
+})
 
 module.exports=router
