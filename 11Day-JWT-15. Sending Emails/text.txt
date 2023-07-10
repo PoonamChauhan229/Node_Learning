@@ -1,0 +1,80 @@
+Handling Error:
+how to customize the errors that get sent back when the file upload fails.
+
+Whether it's because the file is not of the right type or whether it's because it's too large and doesn't meet the file size limitation we've set.
+
+Either way we can go ahead and send back a Jason error message instead of trying to render this HTML
+
+===================
+Now, Add Images to the User Profile.
+
+how to create a link between the image uploaded and the user who actually uploaded it?
+
+Right now all of the Avatar pictures are being dumped into a directory and there's no link between the user who created it and the image that was uploaded.
+
+This route isn't even behind authentication so those are all things we want to fix.
+
+=>put the route behind authentication
+=>then we'll create a place on the User model for the image data to be stored.
+
+=>finally we'll be creating a separate route that authenticated users can use to delete a profile picture they've set.
+
+the only difference is that this route already has one piece of middleware in place that is multer
+
+So we want to make sure they're authenticated before we worry about accepting their upload because if they're not authenticated we would never accept the upload.
+
+So initially, it was directly getting stored to the destination folders.
+so we will remove that from the destination folder.
+as we remove now it will pass the image, but wont save to the destination folder.
+As we want to save it to the user profile.
+
+Once its saved, to the database,
+let check out in the browser
+so we will copy the binary data of avatar and head it towards the browser.
+
+We will use Jsbin
+https://jsbin.com/
+
+<img src="data:image/jpg;base64, binary image data"/>
+
+
+Serving up the Files:
+Another approach to render the image
+
+First set up an GET request.
+=====================================
+AutoCropping and Image Formatting
+
+NPM module called Sharp
+we'll be able to resize images so if someone uploads a huge image we don't actually want to store that
+
+This will convert the images to PNG, whatsoever uploaded.
+
+FRom the login page, remove the avatar as the data is huge.
+
+router.post('users/me/avatar')
+Right here we get the image and we immediately take the buffer and we put it on the avatar field.
+We're going to use sharp in between to change that data.
+Now let's go ahead and explore our sharp in the browser then we'll install it and actually use it
+
+Install the package=> npm i sharp
+
+we're gonna do is load sharp in and add a couple of method calls inside of that root handler.
+There's not that much we actually need to do because sharp takes care of all of the complex stuff for us up at the top of the user router we can go ahead and load the module in right here a new constant called sharp which we will get by requiring the module we're currently installing called sharp and then down below we can focus on actually using it inside of that end point.
+Now sharp uses a lot of libraries behind the scenes to make everything possible to actually make it possible for us to convert those image types and to resize them.
+And that's why the installation process takes a bit longer than some of the other modules we've used before which simply contain a few JavaScript files.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

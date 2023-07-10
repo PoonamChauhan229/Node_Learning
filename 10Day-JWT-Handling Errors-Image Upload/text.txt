@@ -42,6 +42,29 @@ Serving up the Files:
 Another approach to render the image
 
 First set up an GET request.
+=====================================
+AutoCropping and Image Formatting
+
+NPM module called Sharp
+we'll be able to resize images so if someone uploads a huge image we don't actually want to store that
+
+This will convert the images to PNG, whatsoever uploaded.
+
+FRom the login page, remove the avatar as the data is huge.
+
+router.post('users/me/avatar')
+Right here we get the image and we immediately take the buffer and we put it on the avatar field.
+We're going to use sharp in between to change that data.
+Now let's go ahead and explore our sharp in the browser then we'll install it and actually use it
+
+Install the package=> npm i sharp
+
+we're gonna do is load sharp in and add a couple of method calls inside of that root handler.
+There's not that much we actually need to do because sharp takes care of all of the complex stuff for us up at the top of the user router we can go ahead and load the module in right here a new constant called sharp which we will get by requiring the module we're currently installing called sharp and then down below we can focus on actually using it inside of that end point.
+Now sharp uses a lot of libraries behind the scenes to make everything possible to actually make it possible for us to convert those image types and to resize them.
+And that's why the installation process takes a bit longer than some of the other modules we've used before which simply contain a few JavaScript files.
+
+
 
 
 

@@ -8,6 +8,7 @@ const Task=require('../model/taskModel')
 const express=require('express')
 const User=require('../model/userModel')
 const multer=require('multer')
+const sharp=require('sharp')
 const router=new express.Router()
 router.get('/test',(req,res)=>{
     res.send("New Route")
@@ -184,8 +185,12 @@ const upload=multer({
 
 router.post('/users/me/avatar',auth,upload.single('avatar'),async(req,res)=>{
     //Now, we will pass the validated data through our cb function
-    req.user.avatar=req.file.buffer
-    await req.user.save()
+   // req.user.avatar=req.file.buffer
+
+   //Impletementing sharp
+   const buffer =await sharp(req.file.buffer).resize({width:250,height:250}).png().toBuffer()
+   req.user.avatar=buffer
+   await req.user.save()
     res.send({message:"Image Uploaded Successfully"})
 },(error,req,res,next)=>{
     res.status(400).send({error:error.message})
@@ -200,14 +205,34 @@ router.delete('/users/me/avatar',auth,upload.single('avatar'),async(req,res)=>{
     res.status(400).send({error:error.message})
 })
 
-//Another approach to render the image
-router.get('/users/:id/avatar',async(req,res)=>{
-    //Now, we will passs undefined as we want to clear it off
-    const userImage=User.findById(req.params.id)
-    console.log(userImage)
-    res.set('Content-Type','image/jpg')
-    res.send(userImage.avatar)
-    // res.send({message:"Image Viewed Successfully"})
+
+router.get('/users/me/avatar',auth,async (req,res)=>{
+       
+    try{
+        // res.set('Content-Type', 'image/jpg')
+        res.set('Content-Type', 'image/png')
+        res.status(200).send(req.user.avatar)
+    }catch(e){
+        res.status(400).send({message:e})       
+    }
 })
+
+//Another approach to render the image
+router.get('/users/:id/avatar', async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id)
+
+        if (!user || !user.avatar) {
+            throw new Error()
+        }
+
+        res.set('Content-Type', 'image/jpg')
+        res.send(user.avatar)
+    } catch (e) {
+        res.status(404).send()
+    }
+})
+
+
 
 module.exports=router
