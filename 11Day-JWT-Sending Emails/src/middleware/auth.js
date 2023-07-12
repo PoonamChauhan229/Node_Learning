@@ -22,7 +22,7 @@ try{
     console.log(token)
     
     //verify the token that the token is valid or not
-    const decoded=jwt.verify(token,'thisismynewcourse')
+    const decoded=jwt.verify(token,process.env.JWT_SECRET)
     console.log(decoded)
     //find the user with respect to the id and token in the database
     const user=await User.findOne({_id:decoded._id, 'tokens.token':token})

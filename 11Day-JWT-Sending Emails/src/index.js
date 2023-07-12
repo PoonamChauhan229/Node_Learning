@@ -1,15 +1,18 @@
+require('dotenv').config();
+
 // Refactoring it and put it into index.js
-require('./db/mongoose_async')
+// require('./db/mongoose_async')
+const connection=require('./db/mongoose_async')
 const User=require('./model/userModel')
 const Task=require('./model/taskModel')
-
 
 const userRouter=require('./routes/userRoutes')
 const taskRouter=require('./routes/taskRoutes')
 // Routing
 const express=require('express')
+connection();
 const app=express()
-const PORT=process.env.PORT || 3000
+const PORT=process.env.PORT
 
 //
 //Registering an express Middleware
@@ -65,12 +68,12 @@ const myFunction=async ()=>{
         // >the second is the number of rounds we want to perform
         //Now the number of rounds determines how many times the hashing algorithm is executed.
         
-    console.log(password)
-    console.log(hashedPassword)
+    // console.log(password)
+    // console.log(hashedPassword)
 
     // Compare and check whether password and hashed password are same
     const isMatch=await bcrypt.compare(password,hashedPassword)
-    console.log(isMatch)
+    // console.log(isMatch)
 }
 myFunction()
 
@@ -86,7 +89,7 @@ const myFunctionjwt=async()=>{
     console.log("Token is",token)
     // We will verify the token
     const data=jwt.verify(token,'thisismynewcourse')
-    console.log("Data is",data)
+    // console.log("Data is",data)
 }
 myFunctionjwt()
 
@@ -96,7 +99,7 @@ const FetchbytaskRelationship=async(req,res)=>{
     // Line to get the userprofile of that user who craeted the task
     await task.populate('owner')
 
-    console.log(task.owner)
+    // console.log(task.owner)
     //if i want to find the user of the task who created it.
     //with mongoose There's a way to actually set up the relationship between user and task with some helper functions
     //Need to set up , 1 additional property in owner in task feild
@@ -110,7 +113,7 @@ const FetchbyuserRelationship=async(req,res)=>{
     // Line to get the userprofile of that user who craeted the task
     await user.populate('taskRel')
 
-    console.log(user.taskRel)
+    // console.log(user.taskRel)
     //if i want to find the user of the task who created it.
     //with mongoose There's a way to actually set up the relationship between user and task with some helper functions
     //Need to set up , 1 additional property in owner in task feild

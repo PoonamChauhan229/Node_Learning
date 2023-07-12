@@ -9,6 +9,8 @@ const express=require('express')
 const User=require('../model/userModel')
 const multer=require('multer')
 const sharp=require('sharp')
+const {sendWelcomeEmail}=require('../emails/accounts')
+const {sendCancellationEmail}=require('../emails/accounts')
 const router=new express.Router()
 router.get('/test',(req,res)=>{
     res.send("New Route")
@@ -42,6 +44,8 @@ router.post('/users',async (req,res)=>{
 
     try{
         await userData.save()
+        // Sending an email 
+        sendWelcomeEmail(userData.email,userData.name)
         const token=await userData.generateAuthToken()
     //res.status(200).send({userData,token})
         res.status(201).send({userData,token})
@@ -146,11 +150,13 @@ router.delete('/users/me',auth,async(req,res)=>{
 
          // 1st way:
      const deleteUser=await User.findOneAndDelete({_id:req.user._id})
-
+        
          // const deleteUser=await User.findByIdAndDelete(req.params.id)
         if(!deleteUser){
             res.status(404).send({message:"User Deleted and Not Found"})
         }
+        //Send cancellation Email
+        sendCancellationEmail(req.user.email,req.user.name)
          // Delete associated tasks
         await Task.deleteMany({ owner:deleteUser._id });
         res.status(200).send(deleteUser)

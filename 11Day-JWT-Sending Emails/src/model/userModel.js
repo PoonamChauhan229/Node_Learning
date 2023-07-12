@@ -93,7 +93,7 @@ userSchema.methods.generateAuthToken=async function(req,res,next){
     //methods are accessible on instance
     const user=this
     //generate a jwt token
-    const token=jwt.sign({_id:user._id.toString()},'thisismynewcourse')
+    const token=jwt.sign({_id:user._id.toString()},process.env.JWT_SECRET)
     //token generated, add to the tokens array in usermodel
     user.tokens=user.tokens.concat({token:token})
     //save() method=>token should save to the DB
