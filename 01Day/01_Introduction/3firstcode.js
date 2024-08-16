@@ -1,4 +1,4 @@
-console.log("Welcome to the Node Modules")
+console.log("Welcome to the Node JS")
 
 const count=5;
 console.log("count: %d",count)
