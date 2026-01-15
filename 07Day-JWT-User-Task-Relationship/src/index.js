@@ -103,7 +103,7 @@ const FetchbytaskRelationship=async(req,res)=>{
     //ref:'User'// reference to a another model.//Model Name
 //We have a relationship between task and user who created it, using populate()
 }
-FetchbytaskRelationship()
+// FetchbytaskRelationship()
 
 const FetchbyuserRelationship=async(req,res)=>{
     const user=await User.findById('64a6cc2fd9554bf8af4a9def')
@@ -117,6 +117,6 @@ const FetchbyuserRelationship=async(req,res)=>{
     //ref:'User'// reference to a another model.//Model Name
 //We have a relationship between task and user who created it, using populate()
 }
-FetchbyuserRelationship()
-
+// FetchbyuserRelationship()
+// 
 

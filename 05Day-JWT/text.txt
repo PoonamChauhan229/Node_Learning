@@ -72,8 +72,8 @@ and it will be the job of that route to verify that there is a user with those c
 After this we have to make someone login , verify email and password and then only create the task.
 
 Singlt express Router will fall into 2 categories.
-public >> Rest all the Routes.(Everyone can access)
-private >> Signup and Login Route (Which requires authentication)
+private >> Rest all the Routes.(Which requires authentication)
+public >> Signup and Login Route (Everyone can access)
 
 What we need to do is set up the log in request to send back and authentication token.
 

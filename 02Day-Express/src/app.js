@@ -1,6 +1,6 @@
 const geoCode=require('./utlis/geoCode')
 const foreCast=require('./utlis/forecast')
- const dotenv=require('dotenv')
+const dotenv=require('dotenv')
 const cors=require('cors')
 // Express library exports just a single function so express is actually a function as opposed to something like an object and we call it to create a new express application 
 const path=require('path')

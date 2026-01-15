@@ -15,7 +15,7 @@ const connectionString = "mongodb://127.0.0.1:27017/"
 
 // Database Namee
 
-const databaseName = 'task-manager-local2'
+const databaseName = 'task-manager-local3'
 
 //we can now use Mongo client to connect to the server
 // Mongo client has one method we're gonna end up using that is appropriately called connect.
